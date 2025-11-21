@@ -12,7 +12,6 @@ const EditProduct: React.FC = () => {
   const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product | null>(null);
-  // const [categories, setCategories] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
