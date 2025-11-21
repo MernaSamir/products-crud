@@ -1,0 +1,97 @@
+[
+  {
+    "id": "1",
+    "title": "Wireless Headphonyy",
+    "images": [
+      "https://picsum.photos/200",
+      "/uploads/1763597437981.png",
+      "/uploads/1763597825540.png"
+    ],
+    "quantity": 25,
+    "category": "Kitchen",
+    "price": 59.99,
+    "description": "High-quality wireless headphones with noise cancellation.",
+    "colors": [
+      "#000000",
+      "#ffffff"
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Running Shoes",
+    "images": [
+      "/uploads/1763628682881.webp",
+      "/uploads/1763629004659.png",
+      "/uploads/1763735180203.jpg"
+    ],
+    "quantity": 50,
+    "category": "Sportswear",
+    "price": 89.99,
+    "description": "Comfortable running shoes for all types of terrain.",
+    "colors": [
+      "#ff0000",
+      "#ff00ff"
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Coffee Mug",
+    "images": [
+      "https://picsum.photos/200"
+    ],
+    "quantity": 100,
+    "category": "Kitchen",
+    "price": 12.99,
+    "description": "Ceramic mug with 350ml capacity.",
+    "colors": [
+      "#ffffff",
+      "#000000"
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Smart Watch",
+    "images": [
+      "https://picsum.photos/200"
+    ],
+    "quantity": 30,
+    "category": "Electronics",
+    "price": 129.99,
+    "description": "Track your fitness and notifications with this smart watch.",
+    "colors": [
+      "#000000",
+      "#c0c0c0",
+      "#b76e79"
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Yoga Mat",
+    "images": [
+      "https://picsum.photos/200"
+    ],
+    "quantity": 40,
+    "category": "Sportswear",
+    "price": 29.99,
+    "description": "Eco-friendly, non-slip yoga mat for all exercises.",
+    "colors": [
+      "#800080",
+      "#00ff00",
+      "#0000ff"
+    ]
+  },
+  {
+    "id": "1763733781858",
+    "title": "Merna",
+    "category": "caaa",
+    "price": 23,
+    "quantity": 3,
+    "colors": [
+      "#ff0000"
+    ],
+    "images": [
+      "/uploads/1763734160729.png",
+      "/uploads/1763735309030.svg"
+    ]
+  }
+]
