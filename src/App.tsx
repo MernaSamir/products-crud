@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import ProductsPage from "./pages/Products";
 import CreateProduct from "./pages/CreateProduct";
 import EditProduct from "./pages/EditProduct";
-import ProductDetails from "./pages/ProductDetails"; // import your details page
+import ProductDetails from "./pages/ProductDetails";
 
 const App: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createProduct } from "../api/products";
 import ProductForm from "../components/ProductForm";
@@ -8,14 +8,8 @@ import ProductForm from "../components/ProductForm";
 const CreateProduct: React.FC = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
- const [categories, setCategories] = useState<string[]>([]);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/categories")
-      .then((res) => res.json())
-      .then(setCategories)
-      .catch((err) => console.error(err));
-  }, []);
+
 
   const handleSubmit = async (formData: FormData) => {
     setError(null);
@@ -34,7 +28,7 @@ const CreateProduct: React.FC = () => {
        {error && (
         <p className="text-red-600 mt-2">{error}</p>
       )}
-      <ProductForm onSubmit={handleSubmit} categories={categories}/>
+      <ProductForm onSubmit={handleSubmit} />
       
      
     </div>

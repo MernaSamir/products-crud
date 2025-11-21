@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchProducts } from "../api/products";
 import type { Product } from "../types";
 import ProductCard from "../components/ProductCard";
 import ErrorBoundary from "../components/ErrorBoundary";
+import { useGlobalContext } from "../context/globalContext";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -13,6 +14,7 @@ export default function ProductsPage() {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+const { categories } = useGlobalContext()
 
   const navigate = useNavigate();
 
@@ -23,12 +25,11 @@ export default function ProductsPage() {
 
       try {
         const data = await fetchProducts();
-
         if (!data || data.length === 0) {
           setProducts([]);
-          setError(true); // optional: treat empty data as error
+          setError(true);
         } else {
-          setProducts(data); // no need for startTransition unless heavy UI
+          setProducts(data);
         }
       } catch {
         console.error("Failed to fetch products");
@@ -42,14 +43,17 @@ export default function ProductsPage() {
     loadProducts();
   }, []);
 
-  const categories = Array.from(
-    new Set(products.map((p) => p.category))
-  ).filter(Boolean);
 
-  const filteredProducts = products.filter(
-    (p) =>
-      p.title?.toLowerCase().includes(search.toLowerCase()) &&
-      (categoryFilter ? p.category === categoryFilter : true)
+
+  // Filter products based on search and category
+  const filteredProducts = useMemo(
+    () =>
+      products.filter(
+        (p) =>
+          p.title?.toLowerCase().includes(search.toLowerCase()) &&
+          (categoryFilter ? p.category === categoryFilter : true)
+      ),
+    [products, search, categoryFilter]
   );
 
   if (loading) {
@@ -59,10 +63,7 @@ export default function ProductsPage() {
   if (error) {
     return (
       <div className="text-center p-6 text-red-600">
-        {" "}
-        <b className="text-center p-6 text-red-600">
-          Failed to load product. Please try again later.
-        </b>
+        <b>Failed to load products. Please try again later.</b>
       </div>
     );
   }
@@ -114,9 +115,7 @@ export default function ProductsPage() {
 
         {/* Products Grid */}
         {filteredProducts.length === 0 ? (
-          <div className="text-gray-500 text-center p-6">
-            No products found.
-          </div>
+          <div className="text-gray-500 text-center p-6">No products found.</div>
         ) : (
           <div className="grid gap-4 mt-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {filteredProducts.map((product) => (

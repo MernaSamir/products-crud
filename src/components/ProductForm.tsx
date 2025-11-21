@@ -9,6 +9,7 @@ import React, {
 import ProductImage from "./ProductImage";
 import type { Product } from "./../types";
 import ColorPicker from "./ColorPicker";
+import { useGlobalContext } from "../context/globalContext";
 
 // ColorPicker Component
 
@@ -17,7 +18,6 @@ import ColorPicker from "./ColorPicker";
 interface ProductFormProps {
   initialData?: Product;
   onSubmit: (formData: FormData) => void;
-  categories?:string[]
 }
 
 const availableColors = [
@@ -33,7 +33,6 @@ const availableColors = [
 const ProductForm: React.FC<ProductFormProps> = ({
   initialData,
   onSubmit,
-  categories,
 }) => {
   const [form, setForm] = useState({
     title: initialData?.title || "",
@@ -48,6 +47,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
   );
   const [newImages, setNewImages] = useState<File[]>([]);
   const [isPending, startTransition] = useTransition();
+const { categories } = useGlobalContext()
 
   const handleChange = (field: string, value: string | number) => {
     setForm((prev) => ({ ...prev, [field]: value }));

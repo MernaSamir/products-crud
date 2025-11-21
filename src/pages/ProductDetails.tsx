@@ -42,8 +42,7 @@ export default function ProductDetails() {
   };
 
   if (loading) return <p className="text-center p-6">Loading...</p>;
-  if (error) return <p className="text-center p-6 text-red-600">{error}</p>;
-  if (!product) return <p className="text-center p-6 text-red-600">Product not found.</p>;
+  if (error||!product) return <p className="text-center p-6 text-red-600">{error}</p>;
 
   return (
     <div className="max-w-6xl mx-auto p-4">

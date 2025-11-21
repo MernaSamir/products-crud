@@ -12,7 +12,7 @@ const EditProduct: React.FC = () => {
   const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product | null>(null);
-  const [categories, setCategories] = useState<string[]>([]);
+  // const [categories, setCategories] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -42,19 +42,6 @@ const EditProduct: React.FC = () => {
   }, [id]);
 
   // Load categories
-  useEffect(() => {
-    const loadCategories = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/categories");
-        const data = await res.json();
-        setCategories(data);
-      } catch (err) {
-        console.error("Failed to load categories:", err);
-      }
-    };
-
-    loadCategories();
-  }, []);
 
   const handleSubmit = async (formData: FormData) => {
     if (!id) return setError("Failed to update product");
@@ -78,7 +65,6 @@ const EditProduct: React.FC = () => {
         <ProductForm
           onSubmit={handleSubmit}
           initialData={product}
-          categories={categories} // pass categories to form
         />
       </div>
     </ErrorBoundary>
